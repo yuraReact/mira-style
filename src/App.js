@@ -1,6 +1,15 @@
-import Card from "./components/Card";
+import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+
+const arr = [
+  { title: 'Пуховик Tom Tailor regular', price: 3250, imageUrl: '/jackets/jacket01.png' },
+  { title: 'Куртка Puma runner', price: 4200, imageUrl: '/jackets/jacket02.png' },
+  { title: 'Куртка Flower ocean', price: 2100, imageUrl: '/jackets/jacket03.png' },
+  { title: 'Куртка New Balance outfit', price: 4800, imageUrl: '/jackets/jacket04.png' },
+
+
+];
 
 function App() {
   return (
@@ -17,10 +26,12 @@ function App() {
         </div>
 
         <div className="d-flex">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {arr.map((obj) => (
+            <Card title={obj.title}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+            />
+          ))}
         </div>
       </div>
     </div>
