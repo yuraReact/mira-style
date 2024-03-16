@@ -4,8 +4,8 @@ import Drawer from "./components/Drawer";
 
 const arr = [
   { title: 'Пуховик Tom Tailor regular', price: 3250, imageUrl: '/jackets/jacket01.png' },
-  { title: 'Куртка Puma runner', price: 4200, imageUrl: '/jackets/jacket02.png' },
-  { title: 'Куртка Flower ocean', price: 2100, imageUrl: '/jackets/jacket03.png' },
+  { title: 'Куртка Puma runner swift ', price: 4200, imageUrl: '/jackets/jacket02.png' },
+  { title: 'Куртка Flower ocean deizy', price: 2100, imageUrl: '/jackets/jacket03.png' },
   { title: 'Куртка New Balance outfit', price: 4800, imageUrl: '/jackets/jacket04.png' },
 
 
@@ -30,6 +30,7 @@ function App() {
             <Card title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
+              onPlus = {()=> console.log('Нажали плюс')}
             />
           ))}
         </div>

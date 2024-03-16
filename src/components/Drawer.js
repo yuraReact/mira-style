@@ -30,7 +30,7 @@ const Drawer = () => {
                 alt="Jackets"
               />
               <div className="mr-20">
-                <p className="mb-5">Пуховик Tom Tailor regular</p>
+                <p className="mb-5 cu-p">Пуховик Tom Tailor regular</p>
                 <b>3250 грн.</b>
               </div>
               <button className="removeBtn">X</button>
