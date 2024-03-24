@@ -1,21 +1,22 @@
 import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import { useState } from 'react';
 
-const arr = [
-  { title: 'Пуховик Tom Tailor regular', price: 3250, imageUrl: '/jackets/jacket01.png' },
-  { title: 'Куртка Puma runner swift ', price: 4200, imageUrl: '/jackets/jacket02.png' },
-  { title: 'Куртка Flower ocean deizy', price: 2100, imageUrl: '/jackets/jacket03.png' },
-  { title: 'Куртка New Balance outfit', price: 4800, imageUrl: '/jackets/jacket04.png' },
-
-
-];
 
 function App() {
+  const[items, setItems] = useState([]);
+  const [cartOpened, setCartOpened] = useState(false);
+
+  fetch('https://6600662a87c91a11641945a6.mockapi.io/items').then(res => {
+     return res.json();
+  }).then(json => {
+    setItems(json);
+  })
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      <Header onClickCart={()=> setCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex justify-between align-center mb-40">
           <h1>Всі товари</h1>
@@ -25,8 +26,8 @@ function App() {
           </div>
         </div>
 
-        <div className="d-flex">
-          {arr.map((obj) => (
+        <div className="d-flex flex-wrap">
+          {items.map((obj) => (
             <Card title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
