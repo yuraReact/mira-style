@@ -149,18 +149,16 @@ ul {
 }
 
 .removeBtn {
-  background-color: #fe99e0; /* Цвет фона кнопки */
-  color: #fff; /* Цвет текста кнопки */
-  padding: 5px 13px; /* Внутренние отступы кнопки */
-  border: 1px solid white ; /* Убираем границу у кнопки */
-  cursor: pointer; /* Изменяем курсор при наведении на кнопку */
-  border-radius: 5px; /* Закругляем углы кнопки */
-
-  /* Анимация при наведении на кнопку */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #ff69b4; /* Розовый цвет для фона кнопки */
+  color: #fff; /* Белый цвет текста */
+  border: none; /* Убираем границу кнопки */
+  padding: 8px 16px; /* Отступы внутри кнопки */
+  border-radius: 4px; /* Закругленные углы */
+  cursor: pointer; /* Курсор меняется при наведении */
+  font-size: 14px; /* Размер текста */
 }
 
+/* При наведении курсора на кнопку изменяем стиль */
 .removeBtn:hover {
-  background-color: #b6045d; /* Новый цвет фона при наведении на кнопку */
-  color: #fff; /* Новый цвет текста при наведении на кнопку */
+  background-color: #ff4081; /* Изменение цвета фона при наведении */
 }
