@@ -18,7 +18,7 @@ const Card = ({imageUrl, title, price, onPlus}) => {
           <span>Ціна:</span>
           <b>{price} грн.</b>
         </div>
-        <img className={styles.plus} onClick={onClickPlus} width={15} height={15} src={isAdded ? '/img/checked.png': '/img/plus.png' } />
+        <img className={styles.plus} onClick={onClickPlus} width={15} height={15} alt="cehck" src={isAdded ? '/img/checked.png': '/img/plus.png' } />
       </div>
     </div>
   )

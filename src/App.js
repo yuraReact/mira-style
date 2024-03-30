@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 function App() {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
@@ -19,7 +20,11 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
-   setCartItems(prev=> [...prev, obj])
+    setCartItems(prev => [...prev, obj])
+  }
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
   }
 
   return (
@@ -28,16 +33,19 @@ function App() {
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex justify-between align-center mb-40">
-          <h1>Всі товари</h1>
+          <h1>{searchValue ? `Пошук по запиту: ${searchValue}` : 'Всі товари'}</h1>
           <div className="search-block d-flex align-center">
             <img width={18} height={18} src="/img/search.png" alt="Search" />
-            <input placeholder="Пошук..." />
+            <input value={searchValue} onChange={onChangeSearchInput} placeholder="Пошук..." />
+            {searchValue && <button className='deleteSearch' onClick={() => setSearchValue('')}>X</button>}
           </div>
         </div>
 
         <div className="d-flex flex-wrap">
-          {items.map((item) => (
-            <Card title={item.title}
+          {items.filter(item => item.title.includes(searchValue)).map((item, index) => (
+            <Card
+              key={index}
+              title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
               onPlus={(obj) => onAddToCart(obj)}
