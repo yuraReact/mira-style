@@ -4,7 +4,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffeafd;
-  cursor: default;
 }
 
 *{
@@ -70,7 +69,7 @@ header {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -82,7 +81,7 @@ header {
 .drawer {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   width: 385px;
   height: 100%;
   padding: 30px;
@@ -157,9 +156,37 @@ ul {
   }
 }
 
+.cartEmpty {
+  text-align: center;
+
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+
+  .backButton {
+    width: 245px;
+    margin-top: 20px;
+    background-color: #f7d; /* ніжно-рожевий колір */
+    border: 1px solid #f7d4e5; /* колір рамки */
+    color: #fff; /* колір тексту */
+    padding: 10px 20px; /* відступи всередині кнопки */
+    font-size: 16px;
+    border-radius: 5px; /* скругленість кутів */
+    transition: background-color 0.3s, color 0.3s; /* анімація при ховері */
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: #eaa9c8; /* зміна кольору при наведенні */
+    color: #fff; /* зміна кольору тексту при наведенні */
+}
+}
+
 .removeBtn {
-  background-color: #ff69b4; /* Розовый цвет для фона кнопки */
-  color: #fff; /* Белый цвет текста */
+  background-color: transparent;
+  font-weight: bold; /* Розовый цвет для фона кнопки */
+  color: black; /* Белый цвет текста */
   border: none; /* Убираем границу кнопки */
   padding: 8px 16px; /* Отступы внутри кнопки */
   border-radius: 4px; /* Закругленные углы */
@@ -169,5 +196,6 @@ ul {
 
 /* При наведении курсора на кнопку изменяем стиль */
 .removeBtn:hover {
+  color: #ffff;
   background-color: #ff4081; /* Изменение цвета фона при наведении */
 }
