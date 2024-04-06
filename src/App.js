@@ -1,12 +1,12 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import axios from 'axios';
 import Card from './components/Card';
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import Home from './pages/Home';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -29,7 +29,7 @@ function App() {
   }
 
   const onRemoveItem = (id) => {
-   axios.delete(`https://6600662a87c91a11641945a6.mockapi.io/cart/${id}`)
+    axios.delete(`https://6600662a87c91a11641945a6.mockapi.io/cart/${id}`)
     setCartItems(prev => prev.filter(item => item.id !== id))
   }
 
@@ -41,30 +41,12 @@ function App() {
     <div className="wrapper clear">
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
-      <div className="content p-40">
-        <div className="d-flex justify-between align-center mb-40">
-          <h1>{searchValue ? `Пошук по запиту: ${searchValue}` : 'Всі товари'}</h1>
-          <div className="search-block d-flex align-center">
-            <img width={18} height={18} src="/img/search.png" alt="Search" />
-            <input value={searchValue} onChange={onChangeSearchInput} placeholder="Пошук..." />
-            {searchValue && <button className='deleteSearch' onClick={() => setSearchValue('')}>X</button>}
-          </div>
-        </div>
-
-        <div className="d-flex flex-wrap">
-          {items
-          .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item, index) => (
-            <Card
-              key={index}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
-              onPlus={(obj) => onAddToCart(obj)}
-            />
-          ))}
-        </div>
-      </div>
+      <Routes>
+        <Route path='/' element={<Home items={items}
+          searchValue={searchValue} setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput} onAddToCart={onAddToCart} />}  >
+        </Route>
+      </Routes>
     </div>
   );
 }
