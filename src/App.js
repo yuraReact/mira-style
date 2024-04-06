@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route, Link} from 'react-router-dom'
 import axios from 'axios';
 import Card from './components/Card';
 import Header from "./components/Header";
@@ -28,7 +29,7 @@ function App() {
   }
 
   const onRemoveItem = (id) => {
-   // axios.delete(`https://6600662a87c91a11641945a6.mockapi.io/cart/${id}`)
+   axios.delete(`https://6600662a87c91a11641945a6.mockapi.io/cart/${id}`)
     setCartItems(prev => prev.filter(item => item.id !== id))
   }
 
